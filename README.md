@@ -10,9 +10,12 @@ Ubuntu Server 12.04 LTS, 14.04 LTS, configured with: [Server Configuration](http
 
 ```bash
  git checkout --orphan capistrano
- git rm -rf .
- git clone git@github:p404/capistrano-rails.git .
- git add -A .
+ rm -rf *
+```
+And git clone the capistrano-rails project and move the files inside your own project.
+
+```bash
+ git clone --no-checkout git@github.com:p404/capistrano-rails.git 
  git commit -m 'Initial capistrano setup'
 ```
 
@@ -50,10 +53,8 @@ set :scm, :git
 set :repository,  "git@gitserver.com:repo.git"
 set :ssh_options, { forward_agent: true}
 ```
-```
 
 # Configure your stages params
-
 ```ruby
 server 'app_server:22', :app, :db, primary: true
 ```
